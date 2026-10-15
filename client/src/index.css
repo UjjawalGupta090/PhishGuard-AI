@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Material 3 & Fibonacci Elevation Utilities */
+.material-elevation-1 {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+}
+
+.material-elevation-2 {
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.material-elevation-3 {
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.10), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+}
+
+.material-elevation-4 {
+  box-shadow: 0 20px 34px -6px rgba(0, 0, 0, 0.14), 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+}
+
+/* Fibonacci 13-Column Grid for Golden Ratio (5 cols : 8 cols) */
+@media (min-width: 1024px) {
+  .grid-cols-fibonacci {
+    display: grid;
+    grid-template-columns: 5fr 8fr;
+  }
+}
+
+/* Custom Material Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Material State Ripple & Scale Animations */
+.material-state-layer {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease;
+}
+
+.material-state-layer:active {
+  transform: scale(0.985);
+}
+
+/* Keyframes for subtle entrance */
+@keyframes materialFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-material-fade {
+  animation: materialFadeIn 0.35s cubic-bezier(0.05, 0.7, 0.1, 1.0) forwards;
+}
